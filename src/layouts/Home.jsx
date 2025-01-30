@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import DoctorCard from '../components/DoctorCard'
 
 function Home() {
     return (
@@ -91,6 +92,8 @@ function Home() {
                     </div>
                 </div>
             </div>
+
+            <DoctorCard></DoctorCard>
 
             {/* <!-- About Us Section Start --> */}
             <div class="about-us">

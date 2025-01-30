@@ -23,8 +23,8 @@
 			var fromTop = $(window).scrollTop();
 			setHeaderHeight();
 			var headerHeight = $('header .header-sticky').outerHeight()
-			$("header .header-sticky").toggleClass("hide", (fromTop > headerHeight + 100));
-			$("header .header-sticky").toggleClass("active", (fromTop > 600));
+			$("header .header-sticky").toggleclass("hide", (fromTop > headerHeight + 100));
+			$("header .header-sticky").toggleclass("active", (fromTop > 600));
 		});
 	}	
 	
@@ -189,7 +189,7 @@
 
 			element.split = new SplitText(element, {
 				type: "lines,words,chars",
-				linesClass: "split-line",
+				linesclass: "split-line",
 			});
 			gsap.set(element, { perspective: 400 });
 
@@ -229,7 +229,7 @@
 		type: 'image',
 		closeOnContentClick: false,
 		closeBtnInside: false,
-		mainClass: 'mfp-with-zoom',
+		mainclass: 'mfp-with-zoom',
 		image: {
 			verticalFit: true,
 		},
@@ -277,11 +277,11 @@
 
 	function submitMSG(valid, msg){
 		if(valid){
-			var msgClasses = "h4 text-success";
+			var msgclasses = "h4 text-success";
 		} else {
-			var msgClasses = "h4 text-danger";
+			var msgclasses = "h4 text-danger";
 		}
-		$("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
+		$("#msgSubmit").removeclass().addclass(msgclasses).text(msg);
 	}
 	/* Contact form validation end */
 
@@ -317,11 +317,11 @@
 
 	function appointmentsubmitMSG(valid, msg){
 		if(valid){
-			var msgClasses = "h3 text-success";
+			var msgclasses = "h3 text-success";
 		} else {
-			var msgClasses = "h3 text-danger";
+			var msgclasses = "h3 text-danger";
 		}
-		$("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
+		$("#msgSubmit").removeclass().addclass(msgclasses).text(msg);
 	}
 	/* Appointment form validation end */
 
@@ -348,8 +348,8 @@
 					filter: filterValue
 				}); 
 				
-				$menudisesnav.removeClass("active-btn"); 
-				$(this).addClass("active-btn");
+				$menudisesnav.removeclass("active-btn"); 
+				$(this).addclass("active-btn");
 				e.preventDefault();
 			});		
 			$menuitem.isotope({ filter: "*" });
@@ -364,7 +364,7 @@
 	if ($('.popup-video').length) {
 		$('.popup-video').magnificPopup({
 			type: 'iframe',
-			mainClass: 'mfp-fade',
+			mainclass: 'mfp-fade',
 			removalDelay: 160,
 			preloader: false,
 			fixedContentPos: true

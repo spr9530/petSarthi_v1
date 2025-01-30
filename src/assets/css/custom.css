@@ -1,8 +1,5 @@
 /* ----------------------------------------------------------------------------------------
-* Author        : Awaiken
-* Template Name : Dispnsary - Medical HTML Template
-* File          : CSS File
-* Version       : 1.0
+
 * ---------------------------------------------------------------------------------------- */
 /* INDEX
 ----------------------------------------------------------------------------------------
@@ -2784,7 +2781,7 @@ header.main-header .header-sticky.active{
 .page-header{
 	position: relative;
 	background-color: var(--secondary-color);
-	background-image: url('../images/page-header-bg.png');
+	background-image: url('/images/page-header-bg.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

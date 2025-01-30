@@ -60,24 +60,24 @@ class Cursor {
     }
 
     setState(state) {
-        this.el.addClass(state);
+        this.el.addclass(state);
     }
 
     removeState(state) {
-        this.el.removeClass(state);
+        this.el.removeclass(state);
     }
 
     toggleState(state) {
-        this.el.toggleClass(state);
+        this.el.toggleclass(state);
     }
 
     setText(text) {
         this.text.html(text);
-        this.el.addClass('-text');
+        this.el.addclass('-text');
     }
 
     removeText() {
-        this.el.removeClass('-text');
+        this.el.removeclass('-text');
     }
 
     setStick(el) {
@@ -113,13 +113,13 @@ class Cursor {
     show() {
         if (this.visible) return;
         clearInterval(this.visibleInt);
-        this.el.addClass('-visible');
+        this.el.addclass('-visible');
         this.visibleInt = setTimeout(() => this.visible = true);
     }
 
     hide() {
         clearInterval(this.visibleInt);
-        this.el.removeClass('-visible');
+        this.el.removeclass('-visible');
         this.visibleInt = setTimeout(() => this.visible = false, this.options.visibleTimeout);
     }
 }

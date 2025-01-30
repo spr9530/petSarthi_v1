@@ -22,7 +22,7 @@
             nestedParentLinks: true,
             showChildren: false,
             removeIds: true,
-            removeClasses: false,
+            removeclasses: false,
             removeStyles: false,
 			brand: '',
             animations: 'jquery',
@@ -70,7 +70,7 @@
         var $this = this,
             menu = $(this.element),
             settings = this.settings,
-            iconClass,
+            iconclass,
             menuBar;
 
         // clone menu if needed
@@ -89,7 +89,7 @@
         }
 
         // remove classes if set
-        if (settings.removeClasses) {
+        if (settings.removeclasses) {
             $this.mobileNav.removeAttr('class');
             $this.mobileNav.find('*').each(function (i, e) {
                 $(e).removeAttr('class');
@@ -105,10 +105,10 @@
         }
 
         // styling class for the button
-        iconClass = prefix + '_icon';
+        iconclass = prefix + '_icon';
 
         if (settings.label === '') {
-            iconClass += ' ' + prefix + '_no-text';
+            iconclass += ' ' + prefix + '_no-text';
         }
 
         if (settings.parentTag === 'a') {
@@ -125,7 +125,7 @@
         $this.btn = $(
             ['<' + settings.parentTag + ' aria-haspopup="true" role="button" tabindex="0" class="' + prefix + '_btn ' + prefix + '_collapsed">',
                 '<span class="' + prefix + '_menutxt">' + settings.label + '</span>',
-                '<span class="' + iconClass + '">',
+                '<span class="' + iconclass + '">',
                     '<span class="' + prefix + '_icon-bar"></span>',
                     '<span class="' + prefix + '_icon-bar"></span>',
                     '<span class="' + prefix + '_icon-bar"></span>',
@@ -178,17 +178,17 @@
                 // wrap item text with tag and add classes unless we are separating parent links
                 if ((!settings.allowParentLinks || settings.nestedParentLinks) || !containsAnchor) {
                     var $wrap = $(nodes).wrapAll(wrapElement).parent();
-                    $wrap.addClass(prefix+'_row');
+                    $wrap.addclass(prefix+'_row');
                 } else
                     $(nodes).wrapAll('<span class="'+prefix+'_parent-link '+prefix+'_row"/>').parent();
 
                 if (!settings.showChildren) {
-                    item.addClass(prefix+'_collapsed');
+                    item.addclass(prefix+'_collapsed');
                 } else {
-                    item.addClass(prefix+'_open');
+                    item.addclass(prefix+'_open');
                 }
 
-                item.addClass(prefix+'_parent');
+                item.addclass(prefix+'_parent');
 
                 // create parent arrow. wrap with link if parent links and separating
                 var arrowElement = $('<span class="'+prefix+'_arrow">'+(settings.showChildren?settings.openedSymbol:settings.closedSymbol)+'</span>');
@@ -201,13 +201,13 @@
 
 
             } else if ( item.children().length === 0) {
-                 item.addClass(prefix+'_txtnode');
+                 item.addclass(prefix+'_txtnode');
             }
 
             // accessibility for links
             item.children('a').attr('role', 'menuitem').on("click", function(event){
                 //Ensure that it's not a parent
-                if (settings.closeOnClick && !$(event.target).parent().closest('li').hasClass(prefix+'_parent')) {
+                if (settings.closeOnClick && !$(event.target).parent().closest('li').hasclass(prefix+'_parent')) {
                         //Emulate menu close if set
                         $($this.btn).trigger('click');
                     }
@@ -272,7 +272,7 @@
                 case Keyboard.SPACE:
                 case Keyboard.DOWN:
                     e.preventDefault();
-                    if (ev.keyCode !== Keyboard.DOWN || !$($this.btn).hasClass(prefix+'_open')){
+                    if (ev.keyCode !== Keyboard.DOWN || !$($this.btn).hasclass(prefix+'_open')){
                         $this._menuToggle();
                     }
                     
@@ -293,7 +293,7 @@
                     break;
                 case Keyboard.RIGHT:
                     e.preventDefault();
-                    if ($(e.target).parent().hasClass(prefix+'_collapsed')) {
+                    if ($(e.target).parent().hasclass(prefix+'_collapsed')) {
                         $this._itemClick($(e.target));
                     }
                     $(e.target).next().find('[role="menuitem"]').first().trigger( "focus" );
@@ -325,11 +325,11 @@
                 break;
                 case Keyboard.LEFT:
                     e.preventDefault();
-                    if ($(e.target).parent().parent().parent().hasClass(prefix+'_open')) {
+                    if ($(e.target).parent().parent().parent().hasclass(prefix+'_open')) {
                         var parent = $(e.target).parent().parent().prev();
                         parent.trigger( "focus" );
                         $this._itemClick(parent);
-                    } else if ($(e.target).parent().parent().hasClass(prefix+'_nav')){
+                    } else if ($(e.target).parent().parent().hasclass(prefix+'_nav')){
                         $this._menuToggle();
                         $($this.btn).trigger( "focus" );
                     }
@@ -356,14 +356,14 @@
         var btn = $this.btn;
         var mobileNav = $this.mobileNav;
 
-        if (btn.hasClass(prefix+'_collapsed')) {
-            btn.removeClass(prefix+'_collapsed');
-            btn.addClass(prefix+'_open');
+        if (btn.hasclass(prefix+'_collapsed')) {
+            btn.removeclass(prefix+'_collapsed');
+            btn.addclass(prefix+'_open');
         } else {
-            btn.removeClass(prefix+'_open');
-            btn.addClass(prefix+'_collapsed');
+            btn.removeclass(prefix+'_open');
+            btn.addclass(prefix+'_collapsed');
         }
-        btn.addClass(prefix+'_animating');
+        btn.addclass(prefix+'_animating');
         $this._visibilityToggle(mobileNav, btn.parent(), true, btn);
     };
 
@@ -378,23 +378,23 @@
             data.ul = el.next('ul');
             data.parent = el.parent();
             //Separated parent link structure
-            if (data.parent.hasClass(prefix+'_parent-link')) {
+            if (data.parent.hasclass(prefix+'_parent-link')) {
                 data.parent = el.parent().parent();
                 data.ul = el.parent().next('ul');
             }
             el.data('menu', data);
         }
-        if (data.parent.hasClass(prefix+'_collapsed')) {
+        if (data.parent.hasclass(prefix+'_collapsed')) {
             data.arrow.html(settings.openedSymbol);
-            data.parent.removeClass(prefix+'_collapsed');
-            data.parent.addClass(prefix+'_open');
-            data.parent.addClass(prefix+'_animating');
+            data.parent.removeclass(prefix+'_collapsed');
+            data.parent.addclass(prefix+'_open');
+            data.parent.addclass(prefix+'_animating');
             $this._visibilityToggle(data.ul, data.parent, true, el);
         } else {
             data.arrow.html(settings.closedSymbol);
-            data.parent.addClass(prefix+'_collapsed');
-            data.parent.removeClass(prefix+'_open');
-            data.parent.addClass(prefix+'_animating');
+            data.parent.addclass(prefix+'_collapsed');
+            data.parent.removeclass(prefix+'_open');
+            data.parent.addclass(prefix+'_animating');
             $this._visibilityToggle(data.ul, data.parent, true, el);
         }
     };
@@ -410,8 +410,8 @@
         }
         
         function afterOpen(trigger, parent) {
-            $(trigger).removeClass(prefix+'_animating');
-            $(parent).removeClass(prefix+'_animating');
+            $(trigger).removeclass(prefix+'_animating');
+            $(parent).removeclass(prefix+'_animating');
 
             //Fire afterOpen callback
             if (!init) {
@@ -425,8 +425,8 @@
             $this._setVisAttr(el, true);
             el.hide(); //jQuery 1.7 bug fix
 
-            $(trigger).removeClass(prefix+'_animating');
-            $(parent).removeClass(prefix+'_animating');
+            $(trigger).removeclass(prefix+'_animating');
+            $(parent).removeclass(prefix+'_animating');
 
             //Fire init or afterClose callback
             if (!init){
@@ -436,8 +436,8 @@
             }
         }
 
-        if (el.hasClass(prefix+'_hidden')) {
-            el.removeClass(prefix+'_hidden');
+        if (el.hasclass(prefix+'_hidden')) {
+            el.removeclass(prefix+'_hidden');
              //Fire beforeOpen callback
             if (!init) {
                 settings.beforeOpen(trigger);
@@ -459,7 +459,7 @@
             items.attr('tabindex', '0');
             $this._setVisAttr(el, false);
         } else {
-            el.addClass(prefix+'_hidden');
+            el.addclass(prefix+'_hidden');
 
             //Fire init or beforeClose callback
             if (!init){
@@ -538,14 +538,14 @@
 
     Plugin.prototype.open = function(){
         var $this = this;
-        if ($this.btn.hasClass(prefix+'_collapsed')) {
+        if ($this.btn.hasclass(prefix+'_collapsed')) {
             $this._menuToggle();
         }
     };
 
     Plugin.prototype.close = function(){
         var $this = this;
-        if ($this.btn.hasClass(prefix+'_open')) {
+        if ($this.btn.hasclass(prefix+'_open')) {
             $this._menuToggle();
         }
     };
