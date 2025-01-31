@@ -93,8 +93,6 @@ function Home() {
                 </div>
             </div>
 
-            <DoctorCard></DoctorCard>
-
             {/* <!-- About Us Section Start --> */}
             <div class="about-us">
                 <div class="container">
