@@ -6,7 +6,6 @@ import DoctorCard from '../components/DoctorCard'
 function Contact() {
   return (
     <>
-    <Header/>
     <div class="page-header bg-section">
         <div class="container">
             <div class="row">
@@ -118,9 +117,7 @@ function Contact() {
         </div>
     </div>
 
-    <Footer/>
-
-    <DoctorCard/>
+    {/* <DoctorCard/> */}
 
 
     </>

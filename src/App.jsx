@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Home from './layouts/Home';
-import Contact from './layouts/Contact';
-import Appointment from './layouts/Appointment';
-import DoctorProfile from './layouts/DoctorProfile';
-import Booking from './layouts/Booking';
+import Home from './pages/Home';
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,10 +9,10 @@ function App() {
   return (
     <>
      <Home/>
-     <Contact/>
+     {/* <Contact/>
      <Appointment></Appointment>
-     <DoctorProfile/>
-     <Booking/>
+     <DoctorProfile/> */}
+     {/* <Booking/> */}
     </>
   );
 }

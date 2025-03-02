@@ -14,7 +14,7 @@ function DoctorProfile() {
                 >
                   <div className="doctor-sidebar-image">
                     <figure className="image-anime">
-                      <img src="images/team-1.jpg" alt="Doctor" />
+                      <img src="/images/team-1.jpg" alt="Doctor" />
                     </figure>
                   </div>
 

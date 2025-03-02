@@ -2,11 +2,11 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import DoctorCard from '../components/DoctorCard';
+import { Link } from 'react-router-dom';
 
 function Appointment() {
     return (
         <>
-            <Header />
             <div className="our-approach bg-section">
                 <div className="container">
                     <div className="row">
@@ -179,82 +179,81 @@ function Appointment() {
 
             <div className='container mt-5'>
                 <div className="row d-flex justify-content-center">
-                <h2 className='text-center'>Filters</h2>
-                <div className="vision-mission-nav text-center">
-                                        <ul className="nav nav-tabs" id="mvTab" role="tablist">
-                                            <li className="nav-item" role="presentation">
-                                                <button
-                                                    className="nav-link active"
-                                                    id="remodeling-tab"
-                                                    data-bs-toggle="tab"
-                                                    data-bs-target="#vision"
-                                                    type="button"
-                                                    role="tab"
-                                                    aria-selected="true"
-                                                >
-                                                    our vision
-                                                </button>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <button
-                                                    className="nav-link"
-                                                    id="installation-tab"
-                                                    data-bs-toggle="tab"
-                                                    data-bs-target="#mission"
-                                                    type="button"
-                                                    role="tab"
-                                                    aria-selected="false"
-                                                >
-                                                    our mission
-                                                </button>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <button
-                                                    className="nav-link"
-                                                    id="value-tab"
-                                                    data-bs-toggle="tab"
-                                                    data-bs-target="#value"
-                                                    type="button"
-                                                    role="tab"
-                                                    aria-selected="false"
-                                                >
-                                                    our value
-                                                </button>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <button
-                                                    className="nav-link"
-                                                    id="value-tab"
-                                                    data-bs-toggle="tab"
-                                                    data-bs-target="#value"
-                                                    type="button"
-                                                    role="tab"
-                                                    aria-selected="false"
-                                                >
-                                                    Type
-                                                </button>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <button
-                                                    className="nav-link"
-                                                    id="value-tab"
-                                                    data-bs-toggle="tab"
-                                                    data-bs-target="#value"
-                                                    type="button"
-                                                    role="tab"
-                                                    aria-selected="false"
-                                                >
-                                                    Type
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
+                    <h2 className='text-center'>Filters</h2>
+                    <div className="vision-mission-nav text-center">
+                        <ul className="nav nav-tabs" id="mvTab" role="tablist">
+                            <li className="nav-item" role="presentation">
+                                <button
+                                    className="nav-link active"
+                                    id="remodeling-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#vision"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="true"
+                                >
+                                    our vision
+                                </button>
+                            </li>
+                            <li className="nav-item" role="presentation">
+                                <button
+                                    className="nav-link"
+                                    id="installation-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#mission"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                >
+                                    our mission
+                                </button>
+                            </li>
+                            <li className="nav-item" role="presentation">
+                                <button
+                                    className="nav-link"
+                                    id="value-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#value"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                >
+                                    our value
+                                </button>
+                            </li>
+                            <li className="nav-item" role="presentation">
+                                <button
+                                    className="nav-link"
+                                    id="value-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#value"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                >
+                                    Type
+                                </button>
+                            </li>
+                            <li className="nav-item" role="presentation">
+                                <button
+                                    className="nav-link"
+                                    id="value-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#value"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                >
+                                    Type
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <TeamSection />
 
-            <Footer />
         </>
     );
 }
@@ -264,50 +263,56 @@ export default Appointment;
 
 const TeamSection = () => {
     const teamMembers = [
-      { name: "Dr. Esther Howard", specialty: "Ophthalmology", image: "images/team-1.jpg" },
-      { name: "Dr. Jenny Wilson", specialty: "Anesthesiology", image: "images/team-2.jpg" },
-      { name: "Dr. Kristin Watson", specialty: "Infectious Disease", image: "images/team-3.jpg" },
-      { name: "Dr. Arlene McCoy", specialty: "Cardiology", image: "images/team-4.jpg" },
-      { name: "Dr. Michael Johnson", specialty: "Orthopedics", image: "images/team-5.jpg" },
-      { name: "Dr. Sarah Lee", specialty: "Pediatrics", image: "images/team-6.jpg" },
-      { name: "Dr. James Smith", specialty: "Neurology", image: "images/team-7.jpg" },
-      { name: "Dr. Rachel Davis", specialty: "Dermatology", image: "images/team-8.jpg" },
+        { name: "Dr. Esther Howard", specialty: "Ophthalmology", image: "images/team-1.jpg" },
+        { name: "Dr. Jenny Wilson", specialty: "Anesthesiology", image: "images/team-2.jpg" },
+        { name: "Dr. Kristin Watson", specialty: "Infectious Disease", image: "images/team-3.jpg" },
+        { name: "Dr. Arlene McCoy", specialty: "Cardiology", image: "images/team-4.jpg" },
+        { name: "Dr. Michael Johnson", specialty: "Orthopedics", image: "images/team-5.jpg" },
+        { name: "Dr. Sarah Lee", specialty: "Pediatrics", image: "images/team-6.jpg" },
+        { name: "Dr. James Smith", specialty: "Neurology", image: "images/team-7.jpg" },
+        { name: "Dr. Rachel Davis", specialty: "Dermatology", image: "images/team-8.jpg" },
     ];
-  
+
     return (
-      <div className="page-team">
-        <div className="container">
-          <div className="row">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="col-lg-3 col-md-6">
-                <div className="team-member-item wow fadeInUp" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <div className="team-image">
-                    <a href="doctor-single.html" data-cursor-text="View">
-                      <figure className="image-anime">
-                        <img src={member.image} alt={member.name} />
-                      </figure>
-                    </a>
-                  </div>
-                  <div className="team-body">
-                    <div className="team-social-icon">
-                      <ul>
-                        <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i className="fa-brands fa-dribbble"></i></a></li>
-                      </ul>
-                    </div>
-                    <div className="team-content">
-                      <h3><a href="doctor-single.html">{member.name}</a></h3>
-                      <p>{member.specialty}</p>
-                    </div>
-                  </div>
+        <div className="page-team">
+            <div className="container">
+                <div className="row">
+                    {teamMembers.map((member, index) => (
+                        <div key={index} className="col-lg-3 col-md-6">
+                            <div className="team-member-item wow fadeInUp" style={{ animationDelay: `${index * 0.2}s` }}>
+                                <div className="team-image">
+                                    <Link to={`${member.name}`}>
+                                        <div data-cursor-text="View">
+                                            <figure className="image-anime">
+                                                <img src={member.image} alt={member.name} />
+                                            </figure>
+                                        </div>
+                                    </Link>
+                                </div>
+                                <div className="team-body">
+                                    <div className="team-social-icon">
+                                        <ul>
+                                            <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
+                                            <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i className="fa-brands fa-dribbble"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div className="team-content">
+                                        <h3>
+                                            <Link to={`${member.name}`}>
+                                                <div>{member.name}</div>
+                                            </Link>
+                                        </h3>
+                                        <p>{member.specialty}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-              </div>
-            ))}
-          </div>
+            </div>
         </div>
-      </div>
     );
-  };
-  
-  
+};
+
+

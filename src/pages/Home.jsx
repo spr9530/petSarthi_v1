@@ -7,8 +7,6 @@ function Home() {
     return (
         <>
 
-            <Header />
-
             <div className="hero bg-section">
                 <div className="container">
                     <div className="row align-items-center">
@@ -1136,8 +1134,6 @@ function Home() {
                 </div>
             </div>
             {/* <!-- CTA Section End --> */}
-
-            <Footer />
 
         </>
     )
