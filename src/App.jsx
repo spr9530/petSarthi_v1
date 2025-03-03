@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Home from './pages/Home';
+import DoctorLayout from './doctor/DoctorLayout';
 
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
 
   return (
     <>
-     <Home/>
+     {/* <Home/> */}
+     <DoctorLayout/>
      {/* <Contact/>
      <Appointment></Appointment>
      <DoctorProfile/> */}
