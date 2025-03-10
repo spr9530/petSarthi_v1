@@ -17,6 +17,10 @@ import DoctorInvoices from './components/DoctorInvoices.jsx';
 import DoctorChat from './components/DoctorChat.jsx';
 import SettingLayout from './doctor/SettingLayout.jsx';
 import DoctorBasicDetails from './components/DoctorBasicDetails.jsx';
+import DoctorExperience from './components/doctorSettings/DoctorExperience.jsx';
+import DoctorEducation from './components/doctorSettings/DoctorEducation.jsx';
+import DoctorAward from './components/doctorSettings/DoctorAward.jsx';
+import DoctorBusinessHours from './components/doctorSettings/DoctorBusinessHours.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -38,7 +42,13 @@ createRoot(document.getElementById('root')).render(
           <Route path='accounts' element={<DoctorAccounts />} />
           <Route path='invoices' element={<DoctorInvoices />} />
           <Route element={<SettingLayout />}>
-            <Route path="settings" element={<DoctorBasicDetails />}/>
+            <Route path="setting">
+              <Route path="basic" element={<DoctorBasicDetails />} />
+              <Route path="experience" element={<DoctorExperience />} />
+              <Route path="education" element={<DoctorEducation />} />
+              <Route path="award" element={<DoctorAward />} />
+              <Route path="hours" element={<DoctorBusinessHours />} />
+            </Route>
           </Route>
         </Route>
       </Route>
