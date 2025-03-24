@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Home from './pages/Home';
 import DoctorLayout from './doctor/DoctorLayout';
+
 
 
 function App() {
