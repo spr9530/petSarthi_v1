@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { getDoctorInfo } from '../redux/doctorReducers/actions/authActions';
 import { NavLink, Outlet } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 function DoctorLayout() {
+	const dispatch = useDispatch()
+	const navigate = useNavigate();
+	const { user: doctorInfo, loading, error, userInfo } = useSelector((state) => state.auth);
+	useEffect(() => {
+		if (doctorInfo) {
+			dispatch(getDoctorInfo());
+			console.log(userInfo)  // ✅ Fetch doctor info only when needed
+		} else if (!doctorInfo) {
+			navigate("/doctors/login"); // ✅ Redirect only if doctorInfo is missing
+		}
+	}, [doctorInfo, dispatch, navigate]); // ✅ Correct dependencies
 	return (
 		<>
+		{userInfo? <>
 			<div class="content">
 				<div class="container">
 
@@ -19,11 +34,16 @@ function DoctorLayout() {
 											<img src="https://doccure.dreamstechnologies.com/html/template/assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="User Image" />
 										</a>
 										<div class="profile-det-info">
-											<h3><a href="https://doccure.dreamstechnologies.com/html/template/doctor-profile.html">Dr Edalin Hendry</a></h3>
+											<h3><a href="https://doccure.dreamstechnologies.com/html/template/doctor-profile.html">{userInfo.name}</a></h3>
 											<div class="patient-details">
-												<h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
+												<h5 className="mb-0">
+													{userInfo?.professionalDetails?.qualification?.map((qal, index) => (
+														<span key={index}>{qal}{index !== userInfo.professionalDetails.qualification.length - 1 ? ", " : ""}</span>
+													))}
+												</h5>
+
 											</div>
-											<span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>Dentist</span>
+											<span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{userInfo.professionalDetails.specialization}</span>
 										</div>
 									</div>
 								</div>
@@ -31,8 +51,8 @@ function DoctorLayout() {
 									<div class="input-block input-block-new">
 										<label class="form-label">Availability <span class="text-danger">*</span></label>
 										<select class="select form-control">
-											<option>I am Available Now</option>
-											<option>Not Available</option>
+											<option selected={userInfo.presence !== 'available'}>Not Available</option>
+											<option selected={userInfo.presence === 'available'}>I am Available Now</option>
 										</select>
 									</div>
 								</div>
@@ -155,6 +175,7 @@ function DoctorLayout() {
 				</div >
 
 			</div >
+		</> : <>Loading</>}
 		</>
 	)
 }

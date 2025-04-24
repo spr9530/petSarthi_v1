@@ -25,16 +25,24 @@ import DoctorEducation from './components/doctorSettings/DoctorEducation.jsx';
 import DoctorAward from './components/doctorSettings/DoctorAward.jsx';
 import DoctorBusinessHours from './components/doctorSettings/DoctorBusinessHours.jsx';
 import DoctorLogin from './components/DoctorLogin.jsx';
+import UserLogin from './pages/UserLogin.jsx';
+import UserRegister from './pages/UserRegister.jsx';
+import Home from './pages/Home.jsx'
+import UserForgetPassword from './pages/UserForgetPassword.jsx';
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}> {/* ✅ Wrap everything inside Provider */}
     <BrowserRouter>
       <Routes>
         <Route element={<UserLayout />}>
-          <Route index element={<App />} />
+          <Route index element={<Home />} />
+          <Route path="login" element={<UserLogin />} />
+          <Route path="register" element={<UserRegister />} />
+          <Route path="forget-password" element={<UserForgetPassword />} />
           <Route path="contact-us" element={<Contact />} />
           <Route path="book-appointments">
             <Route index element={<Appointment />} />
+
             <Route path=":doctor-id" element={<DoctorProfile />} />
           </Route>
         </Route>

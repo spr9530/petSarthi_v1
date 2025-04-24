@@ -1,9 +1,24 @@
-import React from 'react'
+import React , { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { getDoctorInfo } from '../redux/doctorReducers/actions/authActions';
 // import BookingSlots from './BookingSlots'
 
 function DoctorTimings() {
+    const dispatch = useDispatch()
+        const navigate = useNavigate();
+        const { user: doctorInfo, loading, error, userInfo } = useSelector((state) => state.auth);
+        useEffect(() => {
+            if (doctorInfo && !userInfo) {
+                dispatch(getDoctorInfo());
+                console.log(userInfo)  // ✅ Fetch doctor info only when needed
+            } else if (!doctorInfo ) {
+                navigate("/doctors/login"); // ✅ Redirect only if doctorInfo is missing
+            }
+        }, [doctorInfo, dispatch, navigate]); // ✅ Correct dependencies
     return (
         <>
+        {userInfo? <>
             <div class="col-lg-8 col-xl-9">
 
                 <div class="dashboard-header">
@@ -75,11 +90,16 @@ function DoctorTimings() {
                                             </div>
                                             <div class="slot-body">
                                                 <ul class="time-slots">
-                                                    <li><i class="isax isax-clock"></i>09:00 AM</li>
+                                                {userInfo?.availability?.[0]?.slots?.map((slot, index) => (
+                                                        <li key={index}>
+                                                        <i className="isax isax-clock"></i> {slot}
+                                                        </li>
+                                                    ))}
+                                                    {/* <li><i class="isax isax-clock"></i>09:00 AM</li>
                                                     <li><i class="isax isax-clock"></i>09:30 AM</li>
                                                     <li><i class="isax isax-clock"></i>10:00 AM</li>
                                                     <li><i class="isax isax-clock"></i>10:30 AM</li>
-                                                    <li><i class="isax isax-clock"></i>11:00 AM</li>
+                                                    <li><i class="isax isax-clock"></i>11:00 AM</li> */}
                                                 </ul>
                                             </div>
                                         </div>
@@ -101,7 +121,13 @@ function DoctorTimings() {
                                                 </ul>
                                             </div>
                                             <div class="slot-body">
-                                                <p>No Slots Available</p>
+                                            <ul class="time-slots">
+                                            {userInfo?.availability?.[1]?.slots?.map((slot, index) => (
+                                                        <li key={index}>
+                                                        <i className="isax isax-clock"></i> {slot}
+                                                        </li>
+                                                    ))}
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +148,13 @@ function DoctorTimings() {
                                                 </ul>
                                             </div>
                                             <div class="slot-body">
-                                                <p>No Slots Available</p>
+                                            <ul class="time-slots">
+                                            {userInfo?.availability?.[2]?.slots?.map((slot, index) => (
+                                                        <li key={index}>
+                                                        <i className="isax isax-clock"></i> {slot}
+                                                        </li>
+                                                    ))}
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +175,13 @@ function DoctorTimings() {
                                                 </ul>
                                             </div>
                                             <div class="slot-body">
-                                                <p>No Slots Available</p>
+                                            <ul class="time-slots">
+                                            {userInfo?.availability?.[3]?.slots?.map((slot, index) => (
+                                                        <li key={index}>
+                                                        <i className="isax isax-clock"></i> {slot}
+                                                        </li>
+                                                    ))}
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +202,13 @@ function DoctorTimings() {
                                                 </ul>
                                             </div>
                                             <div class="slot-body">
-                                                <p>No Slots Available</p>
+                                            <ul class="time-slots">
+                                            {userInfo?.availability?.[4]?.slots?.map((slot, index) => (
+                                                        <li key={index}>
+                                                        <i className="isax isax-clock"></i> {slot}
+                                                        </li>
+                                                    ))}
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -185,7 +229,13 @@ function DoctorTimings() {
                                                 </ul>
                                             </div>
                                             <div class="slot-body">
-                                                <p>No Slots Available</p>
+                                            <ul class="time-slots">
+                                            {userInfo?.availability?.[5]?.slots?.map((slot, index) => (
+                                                        <li key={index}>
+                                                        <i className="isax isax-clock"></i> {slot}
+                                                        </li>
+                                                    ))}
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +256,11 @@ function DoctorTimings() {
                                                 </ul>
                                             </div>
                                             <div class="slot-body">
-                                                <p>No Slots Available</p>
+                                            {userInfo?.availability?.[6]?.slots?.map((slot, index) => (
+                                                        <li key={index}>
+                                                        <i className="isax isax-clock"></i> {slot}
+                                                        </li>
+                                                    ))}
                                             </div>
                                         </div>
                                     </div>
@@ -291,6 +345,7 @@ function DoctorTimings() {
                                             </div>
                                             <div class="slot-body">
                                                 <ul class="time-slots">
+                                                    
                                                     <li><i class="isax isax-clock"></i>09:00 AM</li>
                                                     <li><i class="isax isax-clock"></i>09:30 AM</li>
                                                     <li class="slot-space">Space : 2</li>
@@ -447,6 +502,7 @@ function DoctorTimings() {
             </div>
 
             <BookingSlots />
+        </>: <>Loading</>}
         </>
     )
 }
